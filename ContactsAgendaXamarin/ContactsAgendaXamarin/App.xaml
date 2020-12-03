@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ContactsAgendaXamarin.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Primary">#2196F3</Color>
+            <Color x:Key="Secondary">#FFFFFF</Color>
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="{StaticResource Primary}"/>
+            </Style>
+            <Style x:Key="title" TargetType="Label">
+                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+            <Style x:Key="detail" TargetType="Label">
+                <Setter Property="FontSize" Value="Small"/>
+            </Style>
+            <Style x:Key="nameEntry" TargetType="Entry">
+                <Setter Property="VerticalOptions" Value="Start"/>
+                <Setter Property="Placeholder" Value="Name"/>
+            </Style>
+            <Style x:Key="phoneEntry" TargetType="Entry">
+                <Setter Property="VerticalOptions" Value="Start"/>
+                <Setter Property="Placeholder" Value="Number"/>
+                <Setter Property="Keyboard" Value="Telephone"/>
+            </Style>
+            <Style x:Key="saveButton" TargetType="Button">
+                <Setter Property="VerticalOptions" Value="EndAndExpand"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource Primary}"/>
+                <Setter Property="TextColor" Value="{StaticResource Secondary}"/>
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
