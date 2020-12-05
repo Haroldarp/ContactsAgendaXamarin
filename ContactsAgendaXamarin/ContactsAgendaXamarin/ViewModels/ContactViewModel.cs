@@ -35,19 +35,19 @@ namespace ContactsAgendaXamarin.ViewModels
 
         public ContactViewModel()
         {
-            AddCommand = new Command(OnAddContact);
-            MoreCommand = new Command<Contact>(OnMore);
+            AddCommand = new Command(async () => await OnAddContact());
+            MoreCommand = new Command<Contact>(async (Contact contact) => await OnMore(contact));
             DeleteCommand = new Command<Contact>(OnDelete);
 
             Contacts = new ObservableCollection<Contact>();
         }
 
-        private async void OnAddContact()
+        private async Task OnAddContact()
         {
-           await App.Current.MainPage.Navigation.PushAsync(new AddContactPage() { BindingContext = new AddContactViewModel(Contacts, null) });
+           await App.Current.MainPage.Navigation.PushAsync(new AddContactPage(Contacts));
         }
 
-        private async void OnMore(Contact contact)
+        private async Task OnMore(Contact contact)
         {
             string option = await App.Current.MainPage.DisplayActionSheet(null, "Cancel", null, $"Call +{contact.PhoneNumber}", "Edit" );
 
@@ -83,7 +83,7 @@ namespace ContactsAgendaXamarin.ViewModels
 
         private async void OnEdit(Contact contact)
         {
-           await App.Current.MainPage.Navigation.PushAsync(new AddContactPage() { BindingContext = new AddContactViewModel(Contacts, contact) });
+           await App.Current.MainPage.Navigation.PushAsync(new AddContactPage(Contacts, contact));
         }
     }
 

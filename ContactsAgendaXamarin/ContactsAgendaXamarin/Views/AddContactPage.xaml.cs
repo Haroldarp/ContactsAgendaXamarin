@@ -15,9 +15,10 @@ namespace ContactsAgendaXamarin.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddContactPage : ContentPage
     {
-        public AddContactPage()
+        public AddContactPage(ObservableCollection<Contact> contacts, Contact contact = null)
         {
             InitializeComponent();
+            BindingContext = new AddContactViewModel(contacts, contact);
         }
     }
 }
